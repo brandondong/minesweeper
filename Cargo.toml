@@ -1,10 +1,9 @@
 [package]
 version = "0.1.0"
-name = "app_name"
-repository = "https://github.com/seed-rs/seed-quickstart"
-authors = ["Your Name <email@address.com>"]
-description = "App Description"
-categories = ["category"]
+name = "minesweeper"
+repository = "https://github.com/brandondong/minesweeper"
+authors = ["Brandon"]
+description = "Minesweeper"
 license = "MIT"
 readme = "./README.md"
 edition = "2018"
