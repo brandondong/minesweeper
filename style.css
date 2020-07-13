@@ -2,6 +2,29 @@ body {
   margin: 0px;
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 100%;
+}
+
+.App_maxCenteredContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.Game_stretchMaxSize {
+  position: relative;
+  padding-top: calc(500%/6);
+}
+
+.Game_boardContainer {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
