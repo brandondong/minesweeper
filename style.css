@@ -16,8 +16,8 @@ body {
   margin: auto;
 }
 
-.Game_largeWidth {
-  width: calc(100%*24/24);
+.Game_easyWidth {
+  width: calc(100%*10/24);
   margin: auto;
 }
 
@@ -26,14 +26,14 @@ body {
   margin: auto;
 }
 
-.Game_smallWidth {
-  width: calc(100%*10/24);
+.Game_hardWidth {
+  width: calc(100%*24/24);
   margin: auto;
 }
 
-.Game_largeHeightRatio {
+.Game_easyHeightRatio {
   position: relative;
-  padding-top: calc(100%*20/24);
+  padding-top: calc(100%*8/10);
 }
 
 .Game_mediumHeightRatio {
@@ -41,9 +41,9 @@ body {
   padding-top: calc(100%*14/18);
 }
 
-.Game_smallHeightRatio {
+.Game_hardHeightRatio {
   position: relative;
-  padding-top: calc(100%*8/10);
+  padding-top: calc(100%*20/24);
 }
 
 .Game_boardContainer {
@@ -56,7 +56,17 @@ body {
   flex-wrap: wrap;
 }
 
+.Game_easyTile {
+  width: calc(100%/10);
+  height: calc(100%/8);
+}
+
 .Game_mediumTile {
   width: calc(100%/18);
   height: calc(100%/14);
+}
+
+.Game_hardTile {
+  width: calc(100%/24);
+  height: calc(100%/20);
 }

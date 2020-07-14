@@ -6,46 +6,89 @@ fn init(_: Url, _: &mut impl Orders<Msg>) -> Model {
     Model::default()
 }
 
-type Model = i32;
+#[derive(Default)]
+struct Model {
+    difficulty: Difficulty,
+    select_difficulty_element: ElRef<web_sys::HtmlSelectElement>,
+}
 
-// (Remove the line below once any of your `Msg` variants doesn't implement `Copy`.)
-#[derive(Copy, Clone)]
+enum Difficulty {
+    Easy,
+    Medium,
+    Hard,
+}
+
+impl Default for Difficulty {
+    fn default() -> Self {
+        Self::Medium
+    }
+}
+
 enum Msg {
-    Increment,
+    DifficultyChange(fn(i32) -> Difficulty),
 }
 
 fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
     match msg {
-        Msg::Increment => *model += 1,
+        Msg::DifficultyChange(mapping) => {
+            if let Some(elem) = model.select_difficulty_element.get() {
+                model.difficulty = mapping(elem.selected_index());
+            }
+        }
     }
 }
 
-// (Remove the line below once your `Model` become more complex.)
-#[allow(clippy::trivially_copy_pass_by_ref)]
 fn view(model: &Model) -> Node<Msg> {
     div![C!["App_maxCenteredContainer"], view_game(model)]
 }
 
 fn view_game(model: &Model) -> Node<Msg> {
+    let (width_class, ratio_class, tile_class) = match model.difficulty {
+        Difficulty::Easy => ("Game_easyWidth", "Game_easyHeightRatio", "Game_easyTile"),
+        Difficulty::Medium => (
+            "Game_mediumWidth",
+            "Game_mediumHeightRatio",
+            "Game_mediumTile",
+        ),
+        Difficulty::Hard => ("Game_hardWidth", "Game_hardHeightRatio", "Game_hardTile"),
+    };
     div![
-        C!["Game_mediumWidth"],
+        C![width_class],
         view_header(model),
         div![
-            C!["Game_mediumHeightRatio"],
-            div![
-                C!["Game_boardContainer"],
-                div![
-                    C!["Game_mediumTile"],
-                    model,
-                    ev(Ev::Click, |_| Msg::Increment),
-                ],
-            ]
+            C![ratio_class],
+            div![C!["Game_boardContainer"], div![C![tile_class], "A"],]
         ]
     ]
 }
 
 fn view_header(model: &Model) -> Node<Msg> {
-    div![model]
+    select![
+        el_ref(&model.select_difficulty_element),
+        ev(Ev::Change, |_| {
+            Msg::DifficultyChange(header_select_mapping)
+        }),
+        option![
+            attrs! {At::Selected => matches!(model.difficulty, Difficulty::Easy).as_at_value()},
+            "Easy"
+        ],
+        option![
+            attrs! {At::Selected => matches!(model.difficulty, Difficulty::Medium).as_at_value()},
+            "Medium"
+        ],
+        option![
+            attrs! {At::Selected => matches!(model.difficulty, Difficulty::Hard).as_at_value()},
+            "Hard"
+        ]
+    ]
+}
+
+fn header_select_mapping(index: i32) -> Difficulty {
+    match index {
+        0 => Difficulty::Easy,
+        1 => Difficulty::Medium,
+        _ => Difficulty::Hard,
+    }
 }
 
 #[wasm_bindgen(start)]
