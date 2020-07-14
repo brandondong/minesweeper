@@ -16,9 +16,34 @@ body {
   margin: auto;
 }
 
-.Game_stretchMaxSize {
+.Game_largeWidth {
+  width: calc(100%*24/24);
+  margin: auto;
+}
+
+.Game_mediumWidth {
+  width: calc(100%*18/24);
+  margin: auto;
+}
+
+.Game_smallWidth {
+  width: calc(100%*10/24);
+  margin: auto;
+}
+
+.Game_largeHeightRatio {
   position: relative;
-  padding-top: calc(500%/6);
+  padding-top: calc(100%*20/24);
+}
+
+.Game_mediumHeightRatio {
+  position: relative;
+  padding-top: calc(100%*14/18);
+}
+
+.Game_smallHeightRatio {
+  position: relative;
+  padding-top: calc(100%*8/10);
 }
 
 .Game_boardContainer {
@@ -27,4 +52,11 @@ body {
   right: 0px;
   bottom: 0px;
   left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Game_mediumTile {
+  width: calc(100%/18);
+  height: calc(100%/14);
 }

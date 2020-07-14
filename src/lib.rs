@@ -28,13 +28,24 @@ fn view(model: &Model) -> Node<Msg> {
 
 fn view_game(model: &Model) -> Node<Msg> {
     div![
-        C!["Game_stretchMaxSize"],
+        C!["Game_mediumWidth"],
+        view_header(model),
         div![
-            C!["Game_boardContainer"],
-            button![model, ev(Ev::Click, |_| Msg::Increment),],
-            button![model, ev(Ev::Click, |_| Msg::Increment),],
+            C!["Game_mediumHeightRatio"],
+            div![
+                C!["Game_boardContainer"],
+                div![
+                    C!["Game_mediumTile"],
+                    model,
+                    ev(Ev::Click, |_| Msg::Increment),
+                ],
+            ]
         ]
     ]
+}
+
+fn view_header(model: &Model) -> Node<Msg> {
+    div![model]
 }
 
 #[wasm_bindgen(start)]
