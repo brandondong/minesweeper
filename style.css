@@ -8,6 +8,7 @@ body {
 
 #app {
   width: 100%;
+  max-height: 100%;
 }
 
 .App_maxCenteredContainer {
@@ -69,4 +70,9 @@ body {
 .Game_hardTile {
   width: calc(100%/24);
   height: calc(100%/20);
+}
+
+.Tile_container {
+  width: 100%;
+  height: 100%;
 }
