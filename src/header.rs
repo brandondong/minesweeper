@@ -2,7 +2,18 @@ use crate::{Board, HiddenState, Model, Msg, Tile, VisibleState};
 use seed::{prelude::*, *};
 
 pub(crate) fn view_header(model: &Model) -> Node<Msg> {
-    div![view_difficulty_select(model), model.board.flags_left()]
+    div![
+        C!["Header_container"],
+        div![C!["Header_section"], view_difficulty_select(model)],
+        div![
+            C!["Header_section", "Header_centerAligned"],
+            model.board.flags_left()
+        ],
+        div![
+            C!["Header_section", "Header_rightAligned"],
+            view_action_buttons(model)
+        ],
+    ]
 }
 
 fn view_difficulty_select(model: &Model) -> Node<Msg> {
@@ -21,6 +32,10 @@ fn view_difficulty_select(model: &Model) -> Node<Msg> {
         ],
         option![attrs! {At::Selected => hard_selected.as_at_value()}, "Hard"]
     ]
+}
+
+fn view_action_buttons(_model: &Model) -> Node<Msg> {
+    div![button!["Refresh"], button!["Hint"]]
 }
 
 fn header_select_mapping(index: i32) -> Board {

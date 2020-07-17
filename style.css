@@ -68,6 +68,26 @@ body {
   height: calc(100%/20);
 }
 
+.Header_container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.Header_section {
+  flex: 1 0 calc(100%/3);
+}
+
+.Header_centerAligned {
+  display: flex;
+  justify-content: center;
+}
+
+.Header_rightAligned {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .Tile_container {
   width: 100%;
   height: 100%;
