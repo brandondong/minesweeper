@@ -1,10 +1,14 @@
-use crate::{Difficulty, HiddenState, Model, Msg, Tile, VisibleState};
+use crate::{Board, HiddenState, Model, Msg, Tile, VisibleState};
 use seed::{prelude::*, *};
 
 pub(crate) fn view_header(model: &Model) -> Node<Msg> {
-    let easy_selected = matches!(model.difficulty, Difficulty::Easy(_));
-    let medium_selected = matches!(model.difficulty, Difficulty::Medium(_));
-    let hard_selected = matches!(model.difficulty, Difficulty::Hard(_));
+    div![view_difficulty_select(model), model.board.flags_left()]
+}
+
+fn view_difficulty_select(model: &Model) -> Node<Msg> {
+    let easy_selected = matches!(model.board, Board::Easy(_));
+    let medium_selected = matches!(model.board, Board::Medium(_));
+    let hard_selected = matches!(model.board, Board::Hard(_));
     select![
         el_ref(&model.select_difficulty_element),
         ev(Ev::Change, |_| {
@@ -19,21 +23,21 @@ pub(crate) fn view_header(model: &Model) -> Node<Msg> {
     ]
 }
 
-fn header_select_mapping(index: i32) -> Difficulty {
+fn header_select_mapping(index: i32) -> Board {
     match index {
-        0 => Difficulty::Easy(Box::new(
+        0 => Board::Easy(Box::new(
             [Tile {
                 hidden_state: HiddenState::Safe,
                 visible_state: VisibleState::Covered,
             }; 10 * 8],
         )),
-        1 => Difficulty::Medium(Box::new(
+        1 => Board::Medium(Box::new(
             [Tile {
                 hidden_state: HiddenState::Safe,
                 visible_state: VisibleState::Covered,
             }; 18 * 14],
         )),
-        _ => Difficulty::Hard(Box::new(
+        _ => Board::Hard(Box::new(
             [Tile {
                 hidden_state: HiddenState::Safe,
                 visible_state: VisibleState::Covered,

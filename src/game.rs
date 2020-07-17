@@ -1,19 +1,19 @@
 use crate::header::view_header;
 use crate::tile::view_tile;
-use crate::{get_board, Difficulty, Model, Msg};
+use crate::{Board, Model, Msg};
 use seed::{prelude::*, *};
 
 pub(crate) fn view_game(model: &Model) -> Node<Msg> {
-    let (width_class, ratio_class, tile_class) = match model.difficulty {
-        Difficulty::Easy(_) => ("Game_easyWidth", "Game_easyHeightRatio", "Game_easyTile"),
-        Difficulty::Medium(_) => (
+    let (width_class, ratio_class, tile_class) = match model.board {
+        Board::Easy(_) => ("Game_easyWidth", "Game_easyHeightRatio", "Game_easyTile"),
+        Board::Medium(_) => (
             "Game_mediumWidth",
             "Game_mediumHeightRatio",
             "Game_mediumTile",
         ),
-        Difficulty::Hard(_) => ("Game_hardWidth", "Game_hardHeightRatio", "Game_hardTile"),
+        Board::Hard(_) => ("Game_hardWidth", "Game_hardHeightRatio", "Game_hardTile"),
     };
-    let tiles = get_board(model).iter().enumerate().map(|(i, t)| {
+    let tiles = model.board.get_tiles().iter().enumerate().map(|(i, t)| {
         div![
             C![tile_class],
             ev(Ev::Click, move |_| { Msg::TileLeftClick(i) }),
