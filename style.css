@@ -88,6 +88,17 @@ body {
   justify-content: flex-end;
 }
 
+.Header_refreshButton {
+  margin-right: 10px;
+}
+
+.Header_buttonSvg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  stroke: #2c3e50;
+}
+
 .Tile_container {
   width: 100%;
   height: 100%;
