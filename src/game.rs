@@ -25,7 +25,7 @@ pub(crate) fn view_game(model: &Model) -> Node<Msg> {
         ]
     });
     div![
-        C![width_class],
+        C![width_class, "Game_minContent"],
         view_header(model),
         div![C![ratio_class], div![C!["Game_boardContainer"], tiles,]]
     ]

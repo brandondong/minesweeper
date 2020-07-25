@@ -4,13 +4,13 @@ use seed::{prelude::*, *};
 pub(crate) fn view_header(model: &Model) -> Node<Msg> {
     div![
         C!["Header_container"],
-        div![C!["Header_section"], view_difficulty_select(model)],
+        div![C!["Header_edgeSection"], view_difficulty_select(model)],
         div![
-            C!["Header_section", "Header_centerAligned"],
-            model.board.flags_left()
+            C!["Header_middleSection", "Header_centerAligned"],
+            view_game_info(model)
         ],
         div![
-            C!["Header_section", "Header_rightAligned"],
+            C!["Header_edgeSection", "Header_rightAligned"],
             view_action_buttons(model)
         ],
     ]
@@ -34,28 +34,24 @@ fn view_difficulty_select(model: &Model) -> Node<Msg> {
     ]
 }
 
+fn view_game_info(model: &Model) -> Node<Msg> {
+    div![
+        C!["Header_gameInfoContainer"],
+        img![attrs! {At::Src => "assets/flag.svg"}],
+        model.board.flags_left(),
+        img![attrs! {At::Src => "assets/clock.svg"}],
+        "3:29"
+    ]
+}
+
 fn view_action_buttons(_model: &Model) -> Node<Msg> {
     div![
-        button![
-            C!["Header_refreshButton"],
-            svg![
-                C!["Header_buttonSvg"],
-                attrs! {At::ViewBox => "0 0 24 24", At::StrokeWidth => "1.5", At::Fill => "none", At::StrokeLinecap => "round", At::StrokeLineJoin => "round"},
-                path![attrs! {At::Stroke => "none", At::D => "M0 0h24v24H0z"}],
-                path![attrs! {At::D => "M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -5v5h5"}],
-                path![attrs! {At::D => "M4 13a8.1 8.1 0 0 0 15.5 2m.5 5v-5h-5"}]
-            ]
+        C!["Header_actionButtonsContainer"],
+        img![
+            C!["Header_resetButton"],
+            attrs! {At::Src => "assets/reset.svg"}
         ],
-        button![svg![
-            C!["Header_buttonSvg"],
-            attrs! {At::ViewBox => "0 0 24 24", At::StrokeWidth => "1.5", At::Fill => "none", At::StrokeLinecap => "round", At::StrokeLineJoin => "round"},
-            path![attrs! {At::Stroke => "none", At::D => "M0 0h24v24H0z"}],
-            path![attrs! {At::D => "M3 12h1M12 3v1M20 12h1M5.6 5.6l.7 .7M18.4 5.6l-.7 .7"}],
-            path![
-                attrs! {At::D => "M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3"}
-            ],
-            line_![attrs! {At::X1 => "9.7", At::Y1 => "17", At::X2 => "14.3", At::Y2 => "17"}]
-        ]]
+        img![attrs! {At::Src => "assets/hint.svg"}],
     ]
 }
 

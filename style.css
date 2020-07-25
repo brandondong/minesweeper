@@ -1,9 +1,18 @@
+:root {
+  --main-font: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body {
   margin: 0px;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: var(--main-font);
+}
+
+select {
+  font-family: var(--main-font);
 }
 
 #app {
@@ -11,6 +20,10 @@ body {
   max-width: 1000px;
   margin: auto;
   max-height: 100%;
+}
+
+.Game_minContent {
+  min-width: fit-content;
 }
 
 .Game_easyWidth {
@@ -72,10 +85,15 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
+  background-color: grey;
 }
 
-.Header_section {
-  flex: 1 0 calc(100%/3);
+.Header_edgeSection {
+  flex: 1;
+}
+
+.Header_middleSection {
+  margin: 0px 10px;
 }
 
 .Header_centerAligned {
@@ -88,15 +106,18 @@ body {
   justify-content: flex-end;
 }
 
-.Header_refreshButton {
-  margin-right: 10px;
+.Header_gameInfoContainer {
+  display: flex;
+  align-items: center;
 }
 
-.Header_buttonSvg {
-  display: block;
-  width: 25px;
-  height: 25px;
-  stroke: #2c3e50;
+.Header_actionButtonsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.Header_resetButton {
+  margin-right: 10px;
 }
 
 .Tile_container {
