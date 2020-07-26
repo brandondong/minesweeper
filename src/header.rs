@@ -37,21 +37,42 @@ fn view_difficulty_select(model: &Model) -> Node<Msg> {
 fn view_game_info(model: &Model) -> Node<Msg> {
     div![
         C!["Header_gameInfoContainer"],
-        img![attrs! {At::Src => "assets/flag.svg"}],
-        model.board.flags_left(),
-        img![attrs! {At::Src => "assets/clock.svg"}],
-        "3:29"
+        div![
+            C!["Header_gameInfoContainer"],
+            attrs! {At::Title => "Flags Left"},
+            img![attrs! {At::Src => "assets/flag.svg"}],
+            div![
+                C!["Header_gameInfoText", "Header_flagText"],
+                model.board.flags_left()
+            ]
+        ],
+        div![
+            C!["Header_timerSection"],
+            div![
+                C!["Header_gameInfoContainer"],
+                attrs! {At::Title => "Time Elapsed"},
+                img![attrs! {At::Src => "assets/clock.svg"}],
+                div![C!["Header_gameInfoText"], "3:29"]
+            ]
+        ]
     ]
 }
 
 fn view_action_buttons(_model: &Model) -> Node<Msg> {
     div![
         C!["Header_actionButtonsContainer"],
-        img![
+        div![
             C!["Header_resetButton"],
-            attrs! {At::Src => "assets/reset.svg"}
+            view_action_button("assets/reset.svg", "New Game")
         ],
-        img![attrs! {At::Src => "assets/hint.svg"}],
+        view_action_button("assets/hint.svg", "Show Hint")
+    ]
+}
+
+fn view_action_button(src: &str, title: &str) -> Node<Msg> {
+    img![
+        C!["Header_actionButtonImage"],
+        attrs! {At::Src => src, At::Title => title}
     ]
 }
 

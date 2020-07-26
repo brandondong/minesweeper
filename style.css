@@ -111,6 +111,21 @@ select {
   align-items: center;
 }
 
+.Header_gameInfoText {
+  font-size: 18px;
+  color: white;
+  cursor: default;
+  margin-left: 3px;
+}
+
+.Header_flagText {
+  min-width: 3ch;
+}
+
+.Header_timerSection {
+  margin-left: 10px;
+}
+
 .Header_actionButtonsContainer {
   display: flex;
   align-items: center;
@@ -118,6 +133,18 @@ select {
 
 .Header_resetButton {
   margin-right: 10px;
+}
+
+.Header_actionButtonImage {
+  cursor: pointer;
+  display: block;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.Header_actionButtonImage:hover {
+  background-color: rgba(255,255,255,0.1);
 }
 
 .Tile_container {
