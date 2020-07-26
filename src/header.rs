@@ -1,3 +1,4 @@
+use crate::icons::{view_flag_icon, view_hint_icon, view_reset_icon, view_timer_icon};
 use crate::{Board, HiddenState, Model, Msg, Tile, VisibleState};
 use seed::{prelude::*, *};
 
@@ -38,22 +39,19 @@ fn view_game_info(model: &Model) -> Node<Msg> {
     div![
         C!["Header_gameInfoContainer"],
         div![
-            C!["Header_gameInfoContainer"],
-            attrs! {At::Title => "Flags Left"},
-            img![attrs! {At::Src => "assets/flag.svg"}],
+            C!["Header_flagSectionFixedWidth"],
             div![
-                C!["Header_gameInfoText", "Header_flagText"],
-                model.board.flags_left()
+                C!["Header_gameInfoContainer"],
+                attrs! {At::Title => "Flags Left"},
+                view_flag_icon(C!["Header_iconSize"]),
+                div![C!["Header_gameInfoText"], model.board.flags_left()]
             ]
         ],
         div![
-            C!["Header_timerSection"],
-            div![
-                C!["Header_gameInfoContainer"],
-                attrs! {At::Title => "Time Elapsed"},
-                img![attrs! {At::Src => "assets/clock.svg"}],
-                div![C!["Header_gameInfoText"], "3:29"]
-            ]
+            C!["Header_gameInfoContainer", "Header_timerSectionMargin"],
+            attrs! {At::Title => "Time Elapsed"},
+            view_timer_icon(C!["Header_iconSize"]),
+            div![C!["Header_gameInfoText"], "3:29"]
         ]
     ]
 }
@@ -62,17 +60,14 @@ fn view_action_buttons(_model: &Model) -> Node<Msg> {
     div![
         C!["Header_actionButtonsContainer"],
         div![
-            C!["Header_resetButton"],
-            view_action_button("assets/reset.svg", "New Game")
+            C!["Header_resetButtonMargin"],
+            attrs! {At::Title => "New Game"},
+            view_reset_icon(C!["Header_iconSize", "Header_actionButtonImage"])
         ],
-        view_action_button("assets/hint.svg", "Show Hint")
-    ]
-}
-
-fn view_action_button(src: &str, title: &str) -> Node<Msg> {
-    img![
-        C!["Header_actionButtonImage"],
-        attrs! {At::Src => src, At::Title => title}
+        div![
+            attrs! {At::Title => "Show Hint"},
+            view_hint_icon(C!["Header_iconSize", "Header_actionButtonImage"])
+        ]
     ]
 }
 

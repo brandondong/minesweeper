@@ -1,5 +1,6 @@
 mod game;
 mod header;
+mod icons;
 mod tile;
 mod update;
 

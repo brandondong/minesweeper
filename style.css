@@ -1,5 +1,8 @@
 :root {
   --main-font: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  --header-icon-size: 28px;
+  --header-font-size: 18px;
+  --header-game-info-spacing: 3px;
 }
 
 body {
@@ -27,33 +30,33 @@ select {
 }
 
 .Game_easyWidth {
-  width: calc(100%*10/24);
+  width: calc(100% * 10 / 24);
   margin: auto;
 }
 
 .Game_mediumWidth {
-  width: calc(100%*18/24);
+  width: calc(100% * 18 / 24);
   margin: auto;
 }
 
 .Game_hardWidth {
-  width: calc(100%*24/24);
+  width: calc(100% * 24 / 24);
   margin: auto;
 }
 
 .Game_easyHeightRatio {
   position: relative;
-  padding-top: calc(100%*8/10);
+  padding-top: calc(100% * 8 / 10);
 }
 
 .Game_mediumHeightRatio {
   position: relative;
-  padding-top: calc(100%*14/18);
+  padding-top: calc(100% * 14 / 18);
 }
 
 .Game_hardHeightRatio {
   position: relative;
-  padding-top: calc(100%*20/24);
+  padding-top: calc(100% * 20 / 24);
 }
 
 .Game_boardContainer {
@@ -67,18 +70,18 @@ select {
 }
 
 .Game_easyTile {
-  width: calc(100%/10);
-  height: calc(100%/8);
+  width: calc(100% / 10);
+  height: calc(100% / 8);
 }
 
 .Game_mediumTile {
-  width: calc(100%/18);
-  height: calc(100%/14);
+  width: calc(100% / 18);
+  height: calc(100% / 14);
 }
 
 .Game_hardTile {
-  width: calc(100%/24);
-  height: calc(100%/20);
+  width: calc(100% / 24);
+  height: calc(100% / 20);
 }
 
 .Header_container {
@@ -111,18 +114,25 @@ select {
   align-items: center;
 }
 
+.Header_iconSize {
+  width: var(--header-icon-size);
+  height: var(--header-icon-size);
+}
+
 .Header_gameInfoText {
-  font-size: 18px;
+  font-size: var(--header-font-size);
   color: white;
   cursor: default;
-  margin-left: 3px;
+  margin-left: var(--header-game-info-spacing);
 }
 
-.Header_flagText {
-  min-width: 3ch;
+.Header_flagSectionFixedWidth {
+  display: flex;
+  font-size: var(--header-font-size);
+  width: calc(var(--header-icon-size) + var(--header-game-info-spacing) + 3ch);
 }
 
-.Header_timerSection {
+.Header_timerSectionMargin {
   margin-left: 10px;
 }
 
@@ -131,7 +141,7 @@ select {
   align-items: center;
 }
 
-.Header_resetButton {
+.Header_resetButtonMargin {
   margin-right: 10px;
 }
 

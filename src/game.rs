@@ -16,7 +16,7 @@ pub(crate) fn view_game(model: &Model) -> Node<Msg> {
     let tiles = model.board.get_tiles().iter().enumerate().map(|(i, t)| {
         div![
             C![tile_class],
-            ev(Ev::Click, move |_| { Msg::TileLeftClick(i) }),
+            ev(Ev::Click, move |_| Msg::TileLeftClick(i)),
             ev(Ev::ContextMenu, move |event| {
                 event.prevent_default();
                 Msg::TileRightClick(i)
