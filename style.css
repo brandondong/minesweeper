@@ -3,6 +3,8 @@
   --header-icon-size: 28px;
   --header-font-size: 18px;
   --header-game-info-spacing: 3px;
+  --flag-appear-transition-timing: 0.2s;
+  --flag-hide-transition-timing: 0.4s;
 }
 
 body {
@@ -167,6 +169,7 @@ select {
   width: 100%;
   height: 100%;
   background-color: cadetblue;
+  overflow: hidden;
 }
 
 .Tile_flagIcon {
@@ -175,4 +178,28 @@ select {
   height: 100%;
   padding: 10%;
   box-sizing: border-box;
+}
+
+.Tile_flagIconHidden {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform var(--flag-hide-transition-timing), opacity var(--flag-hide-transition-timing);
+}
+
+.Tile_flagIcon > .Icon_flag1 {
+  visibility: visible;
+  transition: transform var(--flag-appear-transition-timing);
+}
+
+.Tile_flagIconHidden > .Icon_flag1 {
+  visibility: hidden;
+  transform: translateY(100%);
+}
+
+.Tile_flagIcon > .Icon_flag2 {
+  visibility: hidden;
+}
+
+.Tile_flagIconHidden > .Icon_flag2 {
+  visibility: visible;
 }

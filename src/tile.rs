@@ -4,7 +4,10 @@ use seed::{prelude::*, *};
 
 pub(crate) fn view_tile(tile: &Tile) -> Node<Msg> {
     match (tile.visible_state, tile.hidden_state) {
-        (VisibleState::Covered, _) => div![C!["Tile_coveredBackground"], "c"],
+        (VisibleState::Covered, _) => div![
+            C!["Tile_coveredBackground"],
+            view_flag_icon(C!["Tile_flagIcon", "Tile_flagIconHidden"])
+        ],
         (VisibleState::Flagged, _) => div![
             C!["Tile_coveredBackground"],
             view_flag_icon(C!["Tile_flagIcon"])
