@@ -159,10 +159,19 @@ select {
   background-color: rgba(255,255,255,0.1);
 }
 
-.Tile_uncoveredBackground {
+.Tile_container {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-color: coral;
+}
+
+.Tile_topLayer {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1;
 }
 
 .Tile_coveredBackground {
@@ -170,6 +179,12 @@ select {
   height: 100%;
   background-color: cadetblue;
   overflow: hidden;
+}
+
+.Tile_coveredBackgroundHidden {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform var(--flag-hide-transition-timing), opacity var(--flag-hide-transition-timing);
 }
 
 .Tile_flagIcon {
