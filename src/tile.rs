@@ -10,7 +10,7 @@ pub(crate) fn view_tile(tile: &Tile) -> Node<Msg> {
         ],
         VisibleState::Flagged => div![
             C!["Tile_coveredBackground"],
-            view_flag_icon(C!["Tile_flagIcon"])
+            view_flag_icon(C!["Tile_flagIcon", "Tile_flagIconVisible"])
         ],
         VisibleState::Uncovered => {
             div![C!["Tile_coveredBackground", "Tile_coveredBackgroundHidden"]]

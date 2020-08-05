@@ -15,6 +15,7 @@ pub(crate) fn view_game(model: &Model) -> Node<Msg> {
     };
     let tiles = model.board.get_tiles().iter().enumerate().map(|(i, t)| {
         div![
+            el_key(&i),
             C![tile_class],
             ev(Ev::Click, move |_| Msg::TileLeftClick(i)),
             ev(Ev::ContextMenu, move |event| {

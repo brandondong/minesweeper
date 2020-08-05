@@ -195,26 +195,21 @@ select {
   box-sizing: border-box;
 }
 
+.Tile_flagIconVisible .Icon_flag {
+  animation: flagRaise var(--flag-appear-transition-timing);
+}
+
+@keyframes flagRaise {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
 .Tile_flagIconHidden {
   transform: scale(0);
   opacity: 0;
   transition: transform var(--flag-hide-transition-timing), opacity var(--flag-hide-transition-timing);
-}
-
-.Tile_flagIcon > .Icon_flag1 {
-  visibility: visible;
-  transition: transform var(--flag-appear-transition-timing);
-}
-
-.Tile_flagIconHidden > .Icon_flag1 {
-  visibility: hidden;
-  transform: translateY(100%);
-}
-
-.Tile_flagIcon > .Icon_flag2 {
-  visibility: hidden;
-}
-
-.Tile_flagIconHidden > .Icon_flag2 {
-  visibility: visible;
 }
