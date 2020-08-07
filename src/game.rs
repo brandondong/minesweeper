@@ -13,7 +13,9 @@ pub(crate) fn view_game(model: &Model) -> Node<Msg> {
         ),
         Board::Hard(_) => ("Game_hardWidth", "Game_hardHeightRatio", "Game_hardTile"),
     };
+    let width = model.board.width();
     let tiles = model.board.get_tiles().iter().enumerate().map(|(i, t)| {
+        let highlighted = i % 2 == (i / width) % 2;
         div![
             el_key(&i),
             C![tile_class],
@@ -22,7 +24,7 @@ pub(crate) fn view_game(model: &Model) -> Node<Msg> {
                 event.prevent_default();
                 Msg::TileRightClick(i)
             }),
-            view_tile(t)
+            view_tile(t, highlighted)
         ]
     });
     div![

@@ -86,6 +86,14 @@ impl Board {
             .count();
         max_flags - num_flags_placed
     }
+
+    fn width(&self) -> usize {
+        match self {
+            Board::Easy(_) => 10,
+            Board::Medium(_) => 18,
+            Board::Hard(_) => 24,
+        }
+    }
 }
 
 #[wasm_bindgen(start)]
