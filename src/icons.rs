@@ -1,13 +1,15 @@
 use crate::Msg;
 use seed::{prelude::*, *};
 
+const FLAG_COLOR: &str = "#F23607";
+
 pub(crate) fn view_flag_icon(attrs: Attrs) -> Node<Msg> {
     svg![
         attrs,
-        attrs! {At::ViewBox => "0 0 24 24", At::StrokeWidth => "1.5", At::Stroke => "#FF5722", At::Fill => "none", At::StrokeLinecap => "round", At::StrokeLineJoin => "round"},
+        attrs! {At::ViewBox => "0 0 24 24", At::StrokeWidth => "1.5", At::Stroke => FLAG_COLOR, At::Fill => "none", At::StrokeLinecap => "round", At::StrokeLineJoin => "round"},
         path![
             C!["Icon_flag"],
-            attrs! {At::D => "M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0 L 19 14 a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0", At::Fill => "#FF5722"}
+            attrs! {At::D => "M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0 L 19 14 a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0", At::Fill => FLAG_COLOR}
         ],
         line_![attrs! {At::X1 => "5", At::Y1 => "5", At::X2 => "5", At::Y2 => "21"}]
     ]

@@ -3,10 +3,10 @@ use crate::{HiddenState, Msg, Tile, VisibleState};
 use seed::{prelude::*, *};
 
 pub(crate) fn view_tile(tile: &Tile, highlighted: bool) -> Node<Msg> {
-    let top_color = if highlighted {
-        "Tile_topHighlight"
+    let (top_color, bottom_color) = if highlighted {
+        ("Tile_topHighlight", "Tile_bottomHighlight")
     } else {
-        "Tile_topNormal"
+        ("Tile_topNormal", "Tile_bottomNormal")
     };
     let top_content = match tile.visible_state {
         VisibleState::Covered => view_flag_icon(C!["Tile_flagIcon", "Tile_flagIconHidden"]),
@@ -28,6 +28,6 @@ pub(crate) fn view_tile(tile: &Tile, highlighted: bool) -> Node<Msg> {
             ],
             top_content
         ],
-        bottom_content
+        div![C!["Tile_bottomLayer", bottom_color], bottom_content]
     ]
 }

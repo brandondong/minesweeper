@@ -14,6 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: var(--main-font);
+  background-color: #333333;
 }
 
 select {
@@ -90,7 +91,7 @@ select {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: grey;
+  background-color: rgb(74,117,44);
 }
 
 .Header_edgeSection {
@@ -176,11 +177,32 @@ select {
 }
 
 .Tile_topHighlight {
-  background-color: cornflowerblue;
+  background-color: rgb(170,215,81);
+}
+
+.Tile_topHighlight:hover {
+  background-color: rgb(191,225,125);
 }
 
 .Tile_topNormal {
-  background-color: cadetblue;
+  background-color: rgb(162,209,73);
+}
+
+.Tile_topNormal:hover {
+  background-color: rgb(185,221,119);
+}
+
+.Tile_bottomLayer {
+  width: 100%;
+  height: 100%;
+}
+
+.Tile_bottomHighlight {
+  background-color: rgb(229,194,159);
+}
+
+.Tile_bottomNormal {
+  background-color: rgb(215,184,153);
 }
 
 .Tile_topLayerHidden {
