@@ -24,10 +24,11 @@ pub(crate) fn view_tile(tile: &Tile, highlighted: bool) -> Node<Msg> {
             C![
                 "Tile_topLayer",
                 top_color,
-                IF!(uncovered => "Tile_topLayerHidden")
+                IF!(uncovered => "Tile_topLayerHidden"),
             ],
             top_content
         ],
+        IF!(!uncovered => div![C!["Tile_topLayerBorder"]]),
         div![C!["Tile_bottomLayer", bottom_color], bottom_content]
     ]
 }
